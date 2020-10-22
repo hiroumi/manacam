@@ -119,7 +119,7 @@ void loop() {
     // 値を設定してNotifyを発行
     data_buff[0] = (int16_t)(pcount * 100.0) & 0xff;
     data_buff[1] = ((int16_t)(pcount * 100.0) >> 8);
-    pCharacteristic->setValue((uint8_t*)&value, 4);//data_buff, 2
+    pCharacteristic->setValue(pcount);//data_buff, 2
     pCharacteristic->notify();
     value++;
     delay(3); // bluetooth stack will go into congestion, if too many packets are sent, in 6 hours test i was able to go as low as 3ms
